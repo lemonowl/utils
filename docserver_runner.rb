@@ -1,19 +1,16 @@
 # frozen_string_literal: true
 
-# ARGV[0] = '8.1.1.16'
+# ARGV[0] = '99.99.1.16'
 abort 'Не указана версия образа documentserver' if ARGV[0] == nil
 
 image_version = ARGV[0]
 image_name = "onlyoffice/4testing-documentserver-ee:#{image_version}"
 
-if image_version.start_with?('99.99')
-  container_name = 'docserver_dev'
-else
-  container_name = 'docserver'
-end
+is_dev = image_version.start_with?('99.99')
+container_name = "docserver#{'_dev' if is_dev}"
 
 # запускаем контейнер с образом соответствующей версии
-command = "docker run -i -t -d -p 80:80 --restart unless-stopped \
+command = "docker run -i -t -d -p 80:80 #{'--restart unless-stopped ' if !is_dev}\
 --env JWT_ENABLED=false --env ALLOW_PRIVATE_IP_ADDRESS=true \
 --volume ~/DocumentServer/logs:/var/log/onlyoffice  \
 --volume ~/DocumentServer/data:/var/www/onlyoffice/Data  \
