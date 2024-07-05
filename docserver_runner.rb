@@ -5,7 +5,12 @@ abort 'Не указана версия образа documentserver' if ARGV[0] 
 
 image_version = ARGV[0]
 image_name = "onlyoffice/4testing-documentserver-ee:#{image_version}"
-container_name = 'docserver'
+
+if image_version.start_with?('99.99')
+  container_name = 'docserver_dev'
+else
+  container_name = 'docserver'
+end
 
 # запускаем контейнер с образом соответствующей версии
 command = "docker run -i -t -d -p 80:80 --restart unless-stopped \
