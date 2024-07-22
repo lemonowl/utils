@@ -1,0 +1,5 @@
+Обновить только один пакет:
+apt-get install --only-upgrade <packagename>
+
+Сделать файл исполняемым
+chmod +x ./script_name

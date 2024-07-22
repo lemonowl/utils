@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# сделать файл исполняемым chmod +x ./unzip_file
+unzip $1 -d $1
+code -n $1
