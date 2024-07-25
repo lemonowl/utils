@@ -10,8 +10,9 @@ is_dev = image_version.start_with?('99.99')
 container_name = "docserver#{'_dev' if is_dev}"
 
 # запускаем контейнер с образом соответствующей версии
-command = "docker run -i -t -d -p 80:80 #{'--restart unless-stopped ' if !is_dev} --env ALLOW_PRIVATE_IP_ADDRESS=true \
---env JWT_ENABLED=true --env JWT_SECRET=docserver_jwt --env JWT_HEADER=Authorization \
+# --env JWT_ENABLED=true --env JWT_SECRET=jwtsecret --env JWT_HEADER=Authorization \
+command = "docker run -i -t -d -p 80:80 #{'--restart unless-stopped ' if !is_dev} \
+--env ALLOW_PRIVATE_IP_ADDRESS=true --env JWT_ENABLED=false \
 --volume ~/DocumentServer/logs:/var/log/onlyoffice  \
 --volume ~/DocumentServer/data:/var/www/onlyoffice/Data  \
 --volume ~/DocumentServer/lib:/var/lib/onlyoffice \
