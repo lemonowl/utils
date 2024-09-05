@@ -1,5 +1,8 @@
 Обновить только один пакет:
-apt-get install --only-upgrade <packagename>
+sudo apt install --only-upgrade <packagename>
+
+Установить deb пакет
+sudo dpkg -i <packagename>.deb
 
 Сделать файл исполняемым
 chmod +x ./script_name
