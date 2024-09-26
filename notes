@@ -1,8 +1,11 @@
 Обновить только один пакет:
-sudo apt install --only-upgrade <packagename>
+sudo apt install --only-upgrade <package_name>
 
 Установить deb пакет
-sudo dpkg -i <packagename>.deb
+sudo dpkg -i <package_name>.deb
 
 Сделать файл исполняемым
 chmod +x ./script_name
+
+Посмотреть логи контейнера
+docker logs -f <container_name>

@@ -24,8 +24,9 @@ result = system(command)
 if result
   # проверить состояние сервисов: docker exec docserver sudo supervisorctl
   # запускаем сервис example, т.к. по умолчанию он отключен
-  system "docker exec #{container_name} \
-sudo sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf"
+  system "docker exec -it #{container_name} sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf"
+  system "docker exec -it #{container_name} sed -i 's/WARN/ALL/g' /etc/onlyoffice/documentserver/log4js/production.json"
+  system "docker exec -it #{container_name} sed -i 's,access_log off,access_log /var/log/onlyoffice/documentserver/nginx.access.log,' /etc/onlyoffice/documentserver/nginx/includes/ds-common.conf"
 else
   abort "Не удалось запустить контейнер для #{image_name}"
 end
