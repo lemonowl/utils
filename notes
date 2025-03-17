@@ -9,3 +9,9 @@ chmod +x ./script_name
 
 Посмотреть логи контейнера
 docker logs -f <container_name>
+
+Коннектор: выполнить в top слое
+var connector = docEditor.createConnector();
+connector.executeMethod("GetVersion", [], function (version){
+    console.log(version);
+});

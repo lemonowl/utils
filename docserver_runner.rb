@@ -27,6 +27,10 @@ if result
   system "docker exec -it #{container_name} sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf"
   system "docker exec -it #{container_name} sed -i 's/WARN/ALL/g' /etc/onlyoffice/documentserver/log4js/production.json"
   system "docker exec -it #{container_name} sed -i 's,access_log off,access_log /var/log/onlyoffice/documentserver/nginx.access.log,' /etc/onlyoffice/documentserver/nginx/includes/ds-common.conf"
+
+  # SDKJS_PLUGINS = '/var/www/onlyoffice/documentserver/sdkjs-plugins'
+  # system "docker exec -it #{container_name} cat #{SDKJS_PLUGINS}/plugin-list-default.json"
+  # system "docker exec -it #{container_name} /usr/bin/documentserver-pluginsmanager.sh --install=#{SDKJS_PLUGINS}/plugin-list-default.json"
 else
   abort "Не удалось запустить контейнер для #{image_name}"
 end
