@@ -10,6 +10,12 @@ chmod +x ./script_name
 Посмотреть логи контейнера
 docker logs -f <container_name>
 
+Зайти в оболочку контейнера
+docker exec -it <container_name> bash
+
+Копировать в контейнер/из контейнера
+docker cp [<container_name>:]<path_from> [<container_name>:]<path_to>
+
 Коннектор: выполнить в top слое
 var connector = docEditor.createConnector();
 connector.executeMethod("GetVersion", [], function (version){
