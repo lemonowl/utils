@@ -12,13 +12,13 @@ def get_arg(position, default=None):
         return default
 
 
-if get_arg(1) is None:
+if not get_arg(1):
     sys.exit('Не указана версия образа documentserver')
 
 image_version = get_arg(1)
 image_name = f"onlyoffice/4testing-documentserver-ee:{image_version}"
 is_dev = image_version.startswith('99.99')
-container_name = get_arg(2) if get_arg(2) is not None else f"docserver{'_dev' if is_dev else ''}"
+container_name = get_arg(2) if get_arg(2) else f"docserver{'_dev' if is_dev else ''}"
 
 # запускаем контейнер с образом соответствующей версии
 # --env JWT_ENABLED=true --env JWT_SECRET=jwtsecret --env JWT_HEADER=Authorization \
