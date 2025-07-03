@@ -29,6 +29,7 @@ command = (
     "--volume ~/DocumentServer/data:/var/www/onlyoffice/Data "
     "--volume ~/DocumentServer/lib:/var/lib/onlyoffice "
     "--volume ~/DocumentServer/db:/var/lib/postgresql "
+    "--volume ~/DocumentServer/plugins:/var/www/onlyoffice/plugins "
     f"--name {container_name} {image_name}"
 )
 try:

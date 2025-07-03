@@ -16,6 +16,10 @@ docker exec -it <container_name> bash
 Копировать в контейнер/из контейнера
 docker cp [<container_name>:]<path_from> [<container_name>:]<path_to>
 
+Установить плагин (в контейнере)
+cd /usr/bin
+./documentserver-pluginsmanager.sh --install="path_to_plugin"
+
 Коннектор: выполнить в top слое
 var connector = docEditor.createConnector();
 connector.executeMethod("GetVersion", [], function (version){
